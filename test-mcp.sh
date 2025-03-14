@@ -9,7 +9,7 @@ echo "Testing MCP endpoint with a simple request..."
 curl -s -X POST \
   -H "Content-Type: application/json" \
   -d '{
-    "operation": "GET_VIDEO_INFO",
+    "operation": "get_video_info",
     "params": {
       "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     }

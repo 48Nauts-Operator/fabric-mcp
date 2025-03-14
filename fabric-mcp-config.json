@@ -2,5 +2,11 @@
   "name": "Fabric MCP",
   "description": "Process YouTube videos and various content types using Fabric patterns",
   "baseUrl": "http://localhost:3011/api/mcp",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "sampleRequest": {
+    "operation": "get_video_info",
+    "params": {
+      "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    }
+  }
 } 
