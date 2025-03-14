@@ -146,4 +146,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 🙏 Acknowledgements
 
 - [Fabric](https://github.com/danielmiessler/fabric) - The AI pattern framework
-- [Anthropic](https://www.anthropic.com/) - For the MCP framework and Claude 
+- [Anthropic](https://www.anthropic.com/) - For the MCP framework and Claude
+- [21Nauts.com](https://21nauts.com) - For the good coffee 
