@@ -2,7 +2,75 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-A powerful Multimodal Conversational Protocol (MCP) integration for [Fabric](https://github.com/danielmiessler/fabric) that enables Claude to process YouTube videos and various content types through a unified API.
+A Model Context Protocol (MCP) server for integrating Fabric with Claude and other AI assistants.
+
+## Overview
+
+This MCP server allows Claude to interact with Fabric, enabling operations like:
+
+- Getting YouTube video information
+- Transcribing YouTube videos
+- Extracting wisdom from videos
+- Analyzing claims in content
+- Extracting interesting parts from videos
+- Rating content quality
+- Writing essays
+- Summarizing academic papers
+- Creating AI art prompts
+- Explaining code
+- Improving documentation
+- Creating social media posts
+
+## Setup
+
+1. Clone this repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Start the MCP server:
+   ```
+   ./simple-mcp-server.js
+   ```
+4. Start the Fabric server:
+   ```
+   npm start
+   ```
+
+## Using with Cursor
+
+1. Open Cursor
+2. Configure the MCP in Cursor settings:
+   - MCP URL: `http://localhost:8765/sse`
+   - Configuration file: `/Users/jarvis/0200_projects/dev/MCP-Projects/fabric-mcp/fabric-mcp-config.json`
+3. Use the `/mcp` command in Cursor to interact with Fabric
+
+## Example Commands
+
+### Get Video Info
+```
+/mcp get_video_info youtubeUrl=https://www.youtube.com/watch?v=dQw4w9WgXcQ
+```
+
+### Transcribe YouTube Video
+```
+/mcp transcribe_youtube youtubeUrl=https://www.youtube.com/watch?v=dQw4w9WgXcQ
+```
+
+### Extract Wisdom
+```
+/mcp extract_wisdom youtubeUrl=https://www.youtube.com/watch?v=dQw4w9WgXcQ
+```
+
+## Troubleshooting
+
+- If you encounter a "Client closed" error, make sure both the MCP server and Fabric server are running.
+- Check the logs in `mcp-server.log` for any errors.
+- Ensure the operation names in your requests match exactly with the supported operations.
+
+## License
+
+MIT
 
 ## 🌟 Features
 
