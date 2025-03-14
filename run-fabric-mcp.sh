@@ -9,13 +9,24 @@ if [ ! -d "node_modules" ]; then
   npm install
 fi
 
-# Output MCP configuration in JSON format
-echo '{"name":"Fabric MCP","description":"Process YouTube videos and various content types using Fabric patterns","baseUrl":"http://localhost:3011/api/mcp","version":"1.0.0"}'
-
-# Run the Fabric MCP server in the background
+# Start the Fabric MCP server in the background
 npm run dev > /dev/null 2>&1 &
 
 # Save the process ID
 echo $! > .fabric-mcp.pid
 
-echo "Fabric MCP server started on port 3011 (PID: $(cat .fabric-mcp.pid))" 
+# Wait for the server to start
+sleep 2
+
+# Output MCP configuration in JSON format (this is what Cursor reads)
+cat << EOF
+{
+  "name": "Fabric MCP",
+  "description": "Process YouTube videos and various content types using Fabric patterns",
+  "baseUrl": "http://localhost:3011/api/mcp",
+  "version": "1.0.0"
+}
+EOF
+
+# Log to a separate file that won't interfere with the JSON output
+echo "Fabric MCP server started on port 3011 (PID: $(cat .fabric-mcp.pid))" > .fabric-mcp.log 
