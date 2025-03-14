@@ -28,7 +28,9 @@ A powerful Multimodal Conversational Protocol (MCP) integration for [Fabric](htt
 ### Prerequisites
 - Node.js (v14 or higher)
 - npm or yarn
-- A Fabric API key
+- **Fabric installed and configured** (see [Fabric installation guide](https://github.com/danielmiessler/fabric))
+  - You'll need to configure Fabric with your LLM API keys (OpenAI, Anthropic, etc.)
+  - For YouTube operations, you'll need a YouTube API key configured in Fabric
 
 ### Installation
 
@@ -49,8 +51,7 @@ npm install
 
 ```bash
 PORT=3000
-FABRIC_API_URL=https://api.fabric.danielmiessler.com
-FABRIC_API_KEY=your_fabric_api_key_here
+FABRIC_API_URL=http://localhost:5000 # Or wherever your Fabric instance is running
 ```
 
 4. Build the project:
