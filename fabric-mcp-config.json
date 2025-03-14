@@ -3,6 +3,20 @@
   "description": "Process YouTube videos and various content types using Fabric patterns",
   "mcpUrl": "http://localhost:8765/sse",
   "version": "1.0.0",
+  "tools": [
+    {
+      "name": "get_video_info",
+      "description": "Get information about a YouTube video"
+    },
+    {
+      "name": "transcribe_youtube",
+      "description": "Transcribe a YouTube video"
+    },
+    {
+      "name": "extract_wisdom",
+      "description": "Extract wisdom from a YouTube video"
+    }
+  ],
   "sampleRequest": {
     "operation": "get_video_info",
     "params": {

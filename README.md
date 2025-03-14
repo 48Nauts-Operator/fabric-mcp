@@ -36,6 +36,10 @@ This MCP server allows Claude to interact with Fabric, enabling operations like:
    ```
    npm start
    ```
+5. Verify the MCP server is running:
+   ```
+   curl http://localhost:8765/health
+   ```
 
 ## Using with Cursor
 
@@ -67,6 +71,9 @@ This MCP server allows Claude to interact with Fabric, enabling operations like:
 - If you encounter a "Client closed" error, make sure both the MCP server and Fabric server are running.
 - Check the logs in `mcp-server.log` for any errors.
 - Ensure the operation names in your requests match exactly with the supported operations.
+- If Cursor shows "No tools available", try restarting Cursor or checking the MCP server logs.
+- Verify the MCP server is working with: `curl http://localhost:8765/health`
+- Test the SSE endpoint with: `curl -N -H "Accept: text/event-stream" http://localhost:8765/sse`
 
 ## License
 

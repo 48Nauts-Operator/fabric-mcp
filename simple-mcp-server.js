@@ -18,6 +18,13 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // Handle health check endpoint
+  if (req.url === '/health' && req.method === 'GET') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ status: 'ok', message: 'MCP server is running' }));
+    return;
+  }
+
   // Handle SSE endpoint
   if (req.url === '/sse') {
     res.writeHead(200, {
@@ -59,11 +66,12 @@ const serverCapabilities = {
   schema_version: "v1",
   server_info: {
     name: "fabric-mcp",
-    version: "1.0.0"
+    version: "1.0.0",
+    description: "Process YouTube videos and various content types using Fabric patterns"
   },
   tools: [
     {
-      name: "fabric_get_video_info",
+      name: "get_video_info",
       description: "Get information about a YouTube video",
       input_schema: {
         type: "object",
@@ -74,17 +82,34 @@ const serverCapabilities = {
           }
         },
         required: ["youtubeUrl"]
-      },
-      output_schema: {
+      }
+    },
+    {
+      name: "transcribe_youtube",
+      description: "Transcribe a YouTube video",
+      input_schema: {
         type: "object",
         properties: {
-          success: {
-            type: "boolean"
-          },
-          data: {
-            type: "object"
+          youtubeUrl: {
+            type: "string",
+            description: "The URL of the YouTube video"
           }
-        }
+        },
+        required: ["youtubeUrl"]
+      }
+    },
+    {
+      name: "extract_wisdom",
+      description: "Extract wisdom from a YouTube video",
+      input_schema: {
+        type: "object",
+        properties: {
+          youtubeUrl: {
+            type: "string",
+            description: "The URL of the YouTube video"
+          }
+        },
+        required: ["youtubeUrl"]
       }
     }
   ]
@@ -163,9 +188,12 @@ async function handleToolCall(message, res) {
     let result;
     
     // Forward the request to our HTTP server
-    if (toolName === 'fabric_get_video_info') {
+    if (toolName === 'get_video_info' || 
+        toolName === 'transcribe_youtube' || 
+        toolName === 'extract_wisdom') {
+      
       const postData = {
-        operation: 'get_video_info',
+        operation: toolName,
         params: {
           youtubeUrl: params.youtubeUrl
         }
