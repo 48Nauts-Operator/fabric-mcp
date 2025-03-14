@@ -1,0 +1,42 @@
+{
+  "name": "fabric-mcp",
+  "version": "0.1.0",
+  "description": "An MCP integration for Fabric to transcribe YouTube videos and push to Obsidian",
+  "main": "dist/index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc",
+    "lint": "eslint . --ext .ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "fabric",
+    "mcp",
+    "anthropic",
+    "claude",
+    "youtube",
+    "obsidian",
+    "transcription"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.10",
+    "axios": "^1.8.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "nodemon": "^3.1.9",
+    "ts-node-dev": "^2.0.0"
+  }
+}
